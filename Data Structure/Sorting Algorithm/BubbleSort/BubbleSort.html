@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bubble Sort</title>
+</head>
+<body>
+    Bubble Sort Time Complexity: Best- O(N) | Worst - O(N*N). <br>
+    Swapping technique,Compares first and second and swap if first is bigger than second element.<br>
+    Same way the element bubbles up to last index place. Conceptually Simple to implement<br>
+    <script>
+        function bubbleSort(arr){
+            let len=arr.length;
+            let outerloop=0;
+            let innerloop=0;
+            for(let i=0;i<len;i++){
+                
+                outerloop++;
+                
+                for(let j=0;j<len;j++){
+                    innerloop++;
+                    
+                    if(arr[j]>arr[j+1]){
+                        let temp=arr[j];
+                        arr[j]=arr[j+1];
+                        arr[j+1]=temp;
+                    }
+                }
+            }
+            console.log(outerloop);
+            console.log(innerloop);
+            return arr;
+        }
+        console.log(bubbleSort([5,3,4,2,8,9,1]));
+
+
+    </script>
+</body>
+</html>

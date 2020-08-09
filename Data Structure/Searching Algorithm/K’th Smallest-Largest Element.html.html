@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kth Smallest </title>
+</head>
+<body>
+    Given an array and a number k where k is smaller than size of array, we need to find the k’th smallest element in the given array. It is given that ll array elements are distinct.
+<br>
+
+
+Input: arr[] = {7, 10, 4, 3, 20, 15}
+k = 3
+Output: 7
+<br>
+Input: arr[] = {7, 10, 4, 3, 20, 15}
+k = 4
+Output: 10<br>
+    A simple solution is to sort the given array using a O(N log N) sorting algorithm like Merge Sort, Heap Sort, etc and return the element at index k-1 in the sorted array.
+    <br>
+Time Complexity of this solution is O(N Log N)<br>
+
+    <script>
+        function kthSmallest(arr,k){
+            arr.sort((a,b)=>b-a);
+            return arr[k-1];
+        }
+        console.log(kthSmallest([7, 10, 4, 3, 20, 15],3));
+    </script>
+</body>
+</html>

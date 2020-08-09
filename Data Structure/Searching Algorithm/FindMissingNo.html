@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Missing Number</title>
+</head>
+<body>
+    <script>
+        function findMissingNumber(arr){
+            let len=arr.length+1;
+            let total=(len*(len+1))/2;
+            
+            let sum=0;
+            for (let index = 0; index < arr.length; index++) {
+                sum+=arr[index];
+                
+            }
+            
+            return  total-sum;
+        }
+        console.log(findMissingNumber([1,2,3,4,6]));
+    </script>
+</body>
+</html>
