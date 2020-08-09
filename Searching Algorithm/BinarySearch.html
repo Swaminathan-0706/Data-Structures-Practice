@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binary Search</title>
+</head>
+<body>
+    Time Complexity of Binary Search: O(logn)<br>
+    Paradign: Divide and Conquer<br>
+    Condition: Need to be a sorted Array
+    <script>
+
+        // function recursiveBinarySearch(arr,x,start,end){
+        //     //Base Condition
+        //     if(start>end){
+        //         return "Element not Found";
+        //     }
+        //     // Find the middle index 
+        //     let mid=Math.floor((start + end)/2);
+        //     if(arr[mid]===x){
+        //         return "Element Found";
+        //     }
+        //     if(arr[mid]>x){
+        //         return recursiveBinarySearch(arr, x, start, mid-1);
+        //     }
+        //     else{
+        //         return recursiveBinarySearch(arr, x, mid+1, end);
+        //     }
+            
+
+        // }
+        // let arr=[1,2,3,4,5];
+        // console.log(recursiveBinarySearch(arr,6,0,arr.length-1));
+
+        function iterativeSearch(arr,x,start,end){
+            start=0, end=arr.length-1; 
+            while(start<=end){
+                // Find the mid index 
+                let mid=Math.floor((start + end)/2); 
+            
+                // If element is present at mid, return True 
+                if (arr[mid]===x) return "Element Found";
+
+                // Else look in left or right half accordingly 
+                else if (arr[mid] > x)  
+                    end = mid - 1;
+                else
+                     start=mid+1;
+            }
+            return "Element Not Found";
+        }
+        let arr=[1,2,3,4,5];
+        console.log(iterativeSearch(arr,3,0,arr.length-1));
+        
+    </script>
+</body>
+</html>
