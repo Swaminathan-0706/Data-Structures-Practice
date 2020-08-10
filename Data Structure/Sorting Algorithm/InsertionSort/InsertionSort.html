@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Insertion Sort</title>
+  </head>
+  <body>
+    Insertion Sort Time complexity: Best O(N) | Worst O(N*N)<br />
+    Example: Deck of cards in hand <br />
+    Stable Sorting Technique<br />
+    Index starts with 1 not 0<br />
+    Sorted Left SubArray<br />
+    <script>
+      function insertionSort(inputArr) 
+      {
+        let length = inputArr.length;
+        for (let i = 1; i < length; i++)
+        {
+        let key = inputArr[i];
+        let j = i - 1;
+        while (j >= 0 && inputArr[j] > key)
+        {
+            inputArr[j + 1] = inputArr[j];
+            j = j - 1;
+        }
+        inputArr[j + 1] = key;
+    }
+    return inputArr;
+}
+      console.log(insertionSort([5, 7, 2, 1, 4]));
+    </script>
+  </body>
+</html>
