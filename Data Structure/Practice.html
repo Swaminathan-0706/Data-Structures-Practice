@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice</title>
+</head>
+<body>
+    <script>
+        let myObj=
+        {
+            firstName:"Sairam",
+            lastName:"Swaminathan",
+            getFullName:function(){
+                return this.firstName + " " + this.lastName;
+            },
+            address:{
+                street:"1234",
+                City:"BGL",
+                state:"PDY",
+
+            },
+            isStateFrom:function (state)
+            {
+                
+                return (this.address.state===state)
+                
+            }
+        }
+        
+            
+        console.log(myObj.isStateFrom("PDY")); 
+        </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merge Sort</title>
+</head>
+<body>
+    Time complexity worst case:O(NlogN) | Best case O(NlogN)<br>
+    Follows Divide and conquer<br>
+    Divides sub array till array of size 1 and merge at end<br>
+    <script>
+        function mergeSort(arr){
+            if(arr.length<=1){
+                return arr;
+            }
+            const middle=Math.floor(arr.length/2);
+            const left=arr.slice(0,middle);
+            const right=arr.slice(middle);
+            return merge(mergeSort(left),mergeSort(right));
+        }
+        function merge (left, right) {
+                let resultArray = [], leftIndex = 0, rightIndex = 0;
+                while (leftIndex < left.length && rightIndex < right.length) {
+                    if (left[leftIndex] < right[rightIndex]) {
+                    resultArray.push(left[leftIndex]);
+                    leftIndex++;
+                    } else {
+                    resultArray.push(right[rightIndex]);
+                    rightIndex++; 
+                    }
+                }
+                return resultArray.concat(left.slice(leftIndex)).concat(right.slice(rightIndex));
+                }
+            console.log(mergeSort([7,6,8,3,1,5,2]));
+    </script>
+    
+</body>
+</html>
