@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linked List</title>
+</head>
+<body>
+    Linked list Implementation
+    <script>
+        class linkedlist{
+            constructor(data){
+                this.data=data,
+                this.next=null
+            }
+        }
+        const head=new linkedlist(12);
+        head.next=new linkedlist(13);
+        head.next.next=new linkedlist(99);
+
+        let current=head;
+        while(current!==null){
+            console.log(current.data);
+            current=current.next;
+        }
+    </script>
+</body>
+</html>
