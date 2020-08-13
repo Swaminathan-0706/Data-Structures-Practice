@@ -81,37 +81,160 @@ header.style.borderBottom="solid 3px #000";
 // Query Selector-one time work like jquery
 // Query Selector all -all items
 
-var header=document.querySelector('#main-header');
-header.style.borderBottom='solid 4px #ccc';
+// var header=document.querySelector('#main-header');
+// header.style.borderBottom='solid 4px #ccc';
 
-var input=document.querySelector('input');
-input.value='hello world';
+// var input=document.querySelector('input');
+// input.value='hello world';
 
-var submit=document.querySelector('input[type="submit"]');
-submit.value="send";
+// var submit=document.querySelector('input[type="submit"]');
+// submit.value="send";
 
 
-var item=document.querySelector('.list-group-item');
-item.style.color='red';
+// var item=document.querySelector('.list-group-item');
+// item.style.color='red';
 
-var lastitem=document.querySelector('.list-group-item:last-child');
-lastitem.style.color='blue';
+// var lastitem=document.querySelector('.list-group-item:last-child');
+// lastitem.style.color='blue';
 
-var seconditem=document.querySelector('.list-group-item:nth-child(2)')
+// var seconditem=document.querySelector('.list-group-item:nth-child(2)')
 
-seconditem.style.color='coral';
+// seconditem.style.color='coral';
 
-// Query Selector will give Nodelist similart to Arrays use Array methods
-var titles=document.querySelectorAll('.title');
-console.log(titles);
-titles[0].textContent='Hello';
-var odd=document.querySelectorAll('li:nth-child(odd');
-var even=document.querySelectorAll('li:nth-child(even');
+// // Query Selector will give Nodelist similart to Arrays use Array methods
+// var titles=document.querySelectorAll('.title');
+// //console.log(titles);
+// titles[0].textContent='Hello';
+// var odd=document.querySelectorAll('li:nth-child(odd');
+// var even=document.querySelectorAll('li:nth-child(even');
 
-for (let index = 0; index < odd.length; index++) {
-    odd[index].style.backgroundColor='#f4f4f4';
-    even[index].style.backgroundColor='#ccc';
+// for (let index = 0; index < odd.length; index++) {
+//     odd[index].style.backgroundColor='#f4f4f4';
+//     even[index].style.backgroundColor='#ccc';
     
+// }
+
+// // Traversing the Dom //
+
+// var itemList=document.querySelector('#items');
+// //Parent Node
+// //console.log(itemList.parentNode);
+
+// itemList.parentNode.style.backgroundColor='#f4f4f4';
+// // console.log(itemList.parentNode.parentNode);
+// // console.log(itemList.parentNode.parentNode.parentNode);
+
+// //Child Node-Will takeline break-Nodelist
+// //console.log(itemList.childNodes);
+// //console.log(itemList.children);//Gives Collection
+
+// itemList.children[0].style.backgroundColor='yellow';
+
+// //First child
+
+// //console.log(itemList.firstChild);//Gives Line break
+// //console.log(itemList.firstElementChild);//Gives first child
+// // first child and last child
+// itemList.firstElementChild.textContent="Hello 1";
+
+// itemList.lastElementChild.textContent='Hello 4';
+
+// // Siblings
+// //Next sibling:
+// console.log(itemList.nextElementSibling);
+
+// // Previous Sibling:
+// //console.log(itemList.previousElementSibling);
+// itemList.previousElementSibling.style.color="Red";
+// //console.log(itemList.previousElementSibling.previousElementSibling);
+
+// // Create New html elements
+// var newDiv=document.createElement('div');
+
+
+// //add Class,id,property
+
+// newDiv.className="Hello";
+// newDiv.id="HelId";
+// newDiv.setAttribute('title','hello div')
+
+// //console.log(newDiv);
+// // Add Text Node
+
+// var newDivText=document.createTextNode("Hello World");
+// // Link text node to previous
+// newDiv.appendChild(newDivText);
+// var container=document.querySelector('header .container');
+// var h1=document.querySelector('header h1');
+
+// newDiv.style.fontSize='30px';
+// // Insert element into dom
+// container.insertBefore(newDiv,h1);
+
+// ------------------------------------------------------------------------//
+// Events Listener
+
+//Button CLick
+// var button=document.getElementById('button').addEventListener('click',buttonClick)
+//function buttonClick(e){
+    //console.log(e.target);
+    //console.log(e.target.className);
+    //console.log(e.target.classList);
+    //console.log(e.target.id);
+    //console.log(e.target.value);
+    //console.log('hi');
+    //document.getElementById('header-title').textContent="changed";
+    //document.querySelector('#main').style.backgroundColor='#f4f4f4';
+    // var output=document.getElementById('output');
+    // output.innerHTML='<h3>'+e.target.id+'</h3>';
+    // console.log(e.type);
+    // console.log(e.clientY);
+    // console.log(e.offsetX);
+    // console.log(e.altKey);
+    // console.log(e.ctrlKey);
+    // console.log(e.shiftKey);
+
+//}
+var button=document.getElementById('button');
+var box=document.getElementById('box');
+var output=document.getElementById('output');
+var select=document.querySelector('select');
+var form =document.querySelector('form');
+// button.addEventListener('click',runEvent);
+// button.addEventListener('dblclick',runEvent);
+// button.addEventListener('mousedown',runEvent);
+// button.addEventListener('mouseup',runEvent);
+
+// box.addEventListener('mouseenter',runEvent);
+// box.addEventListener('mouseleave',runEvent);
+
+// box.addEventListener('mouseover',runEvent);
+// box.addEventListener('mouseout',runEvent);
+//box.addEventListener('mousemove',runEvent);
+
+var itemInput=document.querySelector('input[type="text"]');
+//itemInput.addEventListener('keydown',runEvent);
+//itemInput.addEventListener('keyup',runEvent);
+//itemInput.addEventListener('keypress',runEvent);
+
+// itemInput.addEventListener('focus',runEvent);
+// itemInput.addEventListener('blur',runEvent);
+
+// itemInput.addEventListener('cut',runEvent);
+// itemInput.addEventListener('paste',runEvent);
+
+itemInput.addEventListener('input',runEvent);
+
+select.addEventListener('change',runEvent);
+select.addEventListener('input',runEvent);
+
+form.addEventListener('submit',runEvent);
+function runEvent(e){
+    e.preventDefault();
+     console.log('Event type:'+e.type);
+    //  console.log(e.target.value);
+    // output.innerHTML='<h3>MouseX:'+e.offsetX+'<h3>MouseY:'+e.offsetY;
+    //output.innerHTML='<h3>'+e.target.value+'</h3>';
+    // document.body.style.backgroundColor='rgb('+e.offsetX+','+e.offsetY+',40)'
+    // document.body.style.display='none';
 }
-
-
