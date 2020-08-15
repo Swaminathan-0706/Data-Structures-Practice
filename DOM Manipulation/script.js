@@ -195,46 +195,120 @@ header.style.borderBottom="solid 3px #000";
     // console.log(e.shiftKey);
 
 //}
-var button=document.getElementById('button');
-var box=document.getElementById('box');
-var output=document.getElementById('output');
-var select=document.querySelector('select');
-var form =document.querySelector('form');
-// button.addEventListener('click',runEvent);
-// button.addEventListener('dblclick',runEvent);
-// button.addEventListener('mousedown',runEvent);
-// button.addEventListener('mouseup',runEvent);
+// var button=document.getElementById('button');
+// var box=document.getElementById('box');
+// var output=document.getElementById('output');
+// var select=document.querySelector('select');
+// var form =document.querySelector('form');
+// // button.addEventListener('click',runEvent);
+// // button.addEventListener('dblclick',runEvent);
+// // button.addEventListener('mousedown',runEvent);
+// // button.addEventListener('mouseup',runEvent);
 
-// box.addEventListener('mouseenter',runEvent);
-// box.addEventListener('mouseleave',runEvent);
+// // box.addEventListener('mouseenter',runEvent);
+// // box.addEventListener('mouseleave',runEvent);
 
-// box.addEventListener('mouseover',runEvent);
-// box.addEventListener('mouseout',runEvent);
-//box.addEventListener('mousemove',runEvent);
+// // box.addEventListener('mouseover',runEvent);
+// // box.addEventListener('mouseout',runEvent);
+// //box.addEventListener('mousemove',runEvent);
 
-var itemInput=document.querySelector('input[type="text"]');
-//itemInput.addEventListener('keydown',runEvent);
-//itemInput.addEventListener('keyup',runEvent);
-//itemInput.addEventListener('keypress',runEvent);
+// var itemInput=document.querySelector('input[type="text"]');
+// //itemInput.addEventListener('keydown',runEvent);
+// //itemInput.addEventListener('keyup',runEvent);
+// //itemInput.addEventListener('keypress',runEvent);
 
-// itemInput.addEventListener('focus',runEvent);
-// itemInput.addEventListener('blur',runEvent);
+// // itemInput.addEventListener('focus',runEvent);
+// // itemInput.addEventListener('blur',runEvent);
 
-// itemInput.addEventListener('cut',runEvent);
-// itemInput.addEventListener('paste',runEvent);
+// // itemInput.addEventListener('cut',runEvent);
+// // itemInput.addEventListener('paste',runEvent);
 
-itemInput.addEventListener('input',runEvent);
+// itemInput.addEventListener('input',runEvent);
 
-select.addEventListener('change',runEvent);
-select.addEventListener('input',runEvent);
+// select.addEventListener('change',runEvent);
+// select.addEventListener('input',runEvent);
 
-form.addEventListener('submit',runEvent);
-function runEvent(e){
+// form.addEventListener('submit',runEvent);
+// function runEvent(e){
+//     e.preventDefault();
+//      console.log('Event type:'+e.type);
+//     //  console.log(e.target.value);
+//     // output.innerHTML='<h3>MouseX:'+e.offsetX+'<h3>MouseY:'+e.offsetY;
+//     //output.innerHTML='<h3>'+e.target.value+'</h3>';
+//     // document.body.style.backgroundColor='rgb('+e.offsetX+','+e.offsetY+',40)'
+//     // document.body.style.display='none';
+// }
+
+
+// Final Project
+
+var form=document.getElementById('addform');
+var itemList=document.getElementById('items');
+var filter=document.getElementById('filter');
+// Form Submit
+form.addEventListener('submit',addItem);
+// Delete item
+itemList.addEventListener('click',deleteItem);
+// filter item
+filter.addEventListener('keyup',filterItems);
+
+function filterItems(e){
+    // convert to lower case
+    var text=e.target.value.toLowerCase();
+    var items=itemList.getElementsByTagName('li');
+    // convert collection to array
+    Array.from(items).forEach((item)=>{
+        var itemName=item.firstChild.textContent;
+        if(itemName.toLowerCase().indexOf(text)!=-1){
+            item.style.display='block';
+        }
+        else{
+            item.style.display='none';
+        }
+    })
+}
+
+
+function deleteItem(e){
+    if(e.target.classList.contains('delete')){
+        if(confirm('Are you sure?')){
+            var li=e.target.parentElement;
+            itemList.removeChild(li);
+
+        }
+    }
+
+}
+
+function addItem(e){
     e.preventDefault();
-     console.log('Event type:'+e.type);
-    //  console.log(e.target.value);
-    // output.innerHTML='<h3>MouseX:'+e.offsetX+'<h3>MouseY:'+e.offsetY;
-    //output.innerHTML='<h3>'+e.target.value+'</h3>';
-    // document.body.style.backgroundColor='rgb('+e.offsetX+','+e.offsetY+',40)'
-    // document.body.style.display='none';
+    
+    // Get input li
+    var newItem=document.getElementById('input').value;
+
+
+    // Create new element
+    var li=document.createElement('li');
+
+    // Add class
+    li.className='list-group-item';
+
+    // Add text node with input value
+    li.appendChild(document.createTextNode(newItem));
+
+    // Create delete button elemtnt
+    var delbtn=document.createElement('button');
+
+    // Add class
+    delbtn.className='btn btn-danger btn-sm float-right delete';
+
+    // Append Text Node
+    delbtn.appendChild(document.createTextNode('X'));
+
+    // Add button plus li
+    li.appendChild(delbtn);
+
+    // Append li to list
+    itemList.appendChild(li);
+
 }
